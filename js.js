@@ -1,7 +1,8 @@
 // About the list
 
 var theUL = document.querySelector('ul');
-if(localStorage.getItem('storedList') != '') {
+console.log (localStorage.getItem('storedList'));
+if(localStorage.getItem('storedList')) {
     theUL.innerHTML = localStorage.getItem('storedList');
 }
 else {
