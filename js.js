@@ -4,6 +4,9 @@ var theUL = document.querySelector('ul');
 if(localStorage.getItem('storedList') != '') {
     theUL.innerHTML = localStorage.getItem('storedList');
 }
+else {
+    theUL.innerHTML = '<li>…</li>';
+}
 var theList = theUL.innerHTML;
 //alert(theList);
 theUL.onkeyup = function() {
