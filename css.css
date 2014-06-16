@@ -7,12 +7,14 @@ body {
 
 body {
     font: 100%/1.5 sans-serif;
+    padding: 2.5em 0 0;
 }
 
 ul {
-    margin: 0 0 2.5em;
+    margin: 0;
     padding: 0;
     list-style: none;
+    overflow-y: scroll;
 }
 li {
     margin: 0;
@@ -43,11 +45,18 @@ li:after {
     border-bottom: 1px solid red;
 }
 
+del {
+    color: #666;
+    display: block;
+}
+
 #menu {
     position: fixed;
-    bottom: 0;
+    background: #ebebeb;
+    top: 0;
     height: 2.5em;
-    border-top: 1px solid silver;
+    overflow: visible;
+    border-bottom: 1px solid silver;
     left: 0;
     right: 0;
     display: -webkit-flex;
@@ -66,6 +75,17 @@ li:after {
 #menu button:first-of-type {
     border-width: 0;
 }
-#defaultLists {
+#defaultLists,
+#prefills {
     display: none;
+}
+#defaultLists.active {
+    display: block;
+    height: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 2.5em;
+    width: 100%;
+    background: #ebebeb;
 }

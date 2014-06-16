@@ -34,6 +34,13 @@ function clickHandler( event ) {
         else if($this.getAttribute('data-type') == 'delete') {
             deleteDeleted();
         }
+        else if($this.getAttribute('data-type') == 'prefill') {
+            showPrefill();
+        }
+        else if($this.hasAttribute('data-list')) {
+            fillPrefill($this);
+        }
+
     }
 
     // The Del
@@ -77,4 +84,13 @@ function setLocalStorage() {
     theList = theUL.innerHTML;
     localStorage.setItem('storedList', theList);
     localStorage.getItem('storedList');
+}
+function showPrefill() {
+    document.getElementById('defaultLists').classList.toggle('active');
+}
+function fillPrefill($this) {
+    var theList = $this.getAttribute('data-list');
+    theUL.innerHTML = document.getElementById(theList).innerHTML;
+    setLocalStorage();
+    document.getElementById('defaultLists').classList.toggle('active');
 }
