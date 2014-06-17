@@ -7,7 +7,8 @@ body {
 
 body {
     font: 100%/1.5 sans-serif;
-    margin: 2.5em 11.1111% 5em 11.11111%;
+    margin: 2.5em 0 5em;
+    background: white;
 }
 
 ul {
@@ -18,14 +19,15 @@ ul {
 }
 li {
     margin: 0;
-    padding: .5em .5em 0 1em;
+    padding: .5em 11.1111% 0;
     //border-bottom: 1px solid blue;
 }
 li:after {
     content: '';
-    border-bottom: 1px solid grey;
-    margin: .5em 0 0 -1em;
-    padding: 0 1.5em;
+    border-bottom: 1px solid hsla(0,0%,70%,1);
+    height: 0;
+    margin: .5em 0 0 -12.1111%;
+    padding: 0 22.2222%;
     position: relative;
     left: 0;
     width: 200%;
@@ -52,13 +54,13 @@ del {
 
 #menu {
     position: fixed;
-    background: #ebebeb;
+    background: hsla(0,0%,97%,1);
+    border-bottom: 1px solid hsla(0,0%,70%,1);
     top: 0;
     height: 2.5em;
     overflow: visible;
-    border-bottom: 1px solid silver;
-    left: 11.1111%;
-    right: 11.1111%;
+    left: 0;
+    right: 0;
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
@@ -68,9 +70,10 @@ del {
 #menu button {
     -webkit-flex: 1;
     flex: 1;
+    color: hsla(211,100%,50%,1);
     font: inherit;
-    border: 1px solid grey;
-    border-width: 0 0 0 1px;
+    //border: 1px solid grey;
+    border-width: 0 0 0;
 }
 #menu button:first-of-type {
     border-width: 0;
