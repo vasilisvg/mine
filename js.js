@@ -51,7 +51,7 @@ function clickHandler( event ) {
         else if($this.hasAttribute('data-list')) {
             fillPrefill($this);
         }
-
+        event.preventDefault();
     }
 
     // The Del
