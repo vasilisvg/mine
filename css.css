@@ -7,7 +7,7 @@ body {
 
 body {
     font: 100%/1.5 sans-serif;
-    padding: 2.5em 22.2222% 5em 11.11111%;
+    margin: 2.5em 11.1111% 5em 11.11111%;
 }
 
 ul {
@@ -58,7 +58,7 @@ del {
     overflow: visible;
     border-bottom: 1px solid silver;
     left: 11.1111%;
-    right: 22.2222%;
+    right: 11.1111%;
     display: -webkit-flex;
     display: flex;
     -webkit-justify-content: center;
