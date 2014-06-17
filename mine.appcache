@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# 20140617-1
+
+# Explicitly cached 'master entries'.
+CACHE:
+favicon.ico
+index.html
+css.css
+js.js
+
+# Resources that require the user to be online.
+NETWORK:
+*
