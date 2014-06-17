@@ -13,6 +13,17 @@ theUL.onkeyup = function() {
     setLocalStorage();
 }
 
+if(localStorage.getItem('storedState')) {
+    var theState = localStorage.getItem('storedState');
+    setState(document.querySelector('[data-type]'),theState);
+    if(theState == 'edit') {
+        theUL.removeAttribute('contenteditable');
+    }
+    else {
+        //theUL.addAttribute('contenteditable');
+    }
+}
+
 
 // onclick
 
@@ -71,6 +82,8 @@ function clickHandler( event ) {
 function setState($this,stateType) {
     $this.setAttribute('data-type',stateType);
     $this.innerHTML = stateType;
+    localStorage.setItem('storedState', stateType);
+    //localStorage.getItem('storedList');
 }
 function deleteDeleted() {
     dels = document.querySelectorAll('del');
