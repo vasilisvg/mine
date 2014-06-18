@@ -1,3 +1,5 @@
+(function() {
+
 // We'll use this <ul>
 var theUL = document.querySelector('body > ul');
 
@@ -37,32 +39,32 @@ if(localStorage.getItem('storedState')) {
 //document.addEventListener( 'click', clickHandler );
 document.addEventListener( 'touchstart', clickHandler );
 function clickHandler( event ) {
-    $this = event.target;
+    clickedThing = event.target;
 
     // the buttons
-    if($this.nodeName == 'BUTTON'){
+    if(clickedThing.nodeName == 'BUTTON'){
 
         // If the state is set to shopping, remove contenteditable
-        if($this.getAttribute('data-type') == 'shop') {
+        if(clickedThing.getAttribute('data-type') == 'shop') {
             theUL.removeAttribute('contenteditable');
-            setState($this,'edit');
+            setState(clickedThing,'edit');
         }
         // If the state is set to edit, add contenteditable
-        else if($this.getAttribute('data-type') == 'edit') {
+        else if(clickedThing.getAttribute('data-type') == 'edit') {
             theUL.setAttribute('contenteditable','');
-            setState($this,'shop');
+            setState(clickedThing,'shop');
         }
         // If the delete-button is pressed, delete stuff
-        else if($this.getAttribute('data-type') == 'delete') {
+        else if(clickedThing.getAttribute('data-type') == 'delete') {
             deleteDeleted();
         }
         // if the prefill-button is pressed, show the prefill dropdown
-        else if($this.getAttribute('data-type') == 'prefill') {
+        else if(clickedThing.getAttribute('data-type') == 'prefill') {
             showPrefill();
         }
         // if a prefill-list is pressed, prefill the list
-        else if($this.hasAttribute('data-list')) {
-            fillPrefill($this);
+        else if(clickedThing.hasAttribute('data-list')) {
+            fillPrefill(clickedThing);
         }
         // this prevents iOS from highlighting the button
         // .3s after it was pressed
@@ -70,28 +72,28 @@ function clickHandler( event ) {
     }
 
     // If a <del> element is pressed
-    else if($this.nodeName == 'DEL'){
+    else if(clickedThing.nodeName == 'DEL'){
         // don't do anything if the <ul> is editable
-        if($this.parentNode.parentNode.hasAttribute('contenteditable')) {
+        if(clickedThing.parentNode.parentNode.hasAttribute('contenteditable')) {
             return;
         }
         // remove the <del>,
         else {
-            var listItem = $this.innerHTML;
-            $this.parentNode.innerHTML = listItem;
+            var listItem = clickedThing.innerHTML;
+            clickedThing.parentNode.innerHTML = listItem;
             setLocalStorage();
         }
     }
     // if a <li> is pressed
-    else if($this.nodeName == 'LI'){
+    else if(clickedThing.nodeName == 'LI'){
         // don't do anything if the <ul> is editable
-        if($this.parentNode.hasAttribute('contenteditable')) {
+        if(clickedThing.parentNode.hasAttribute('contenteditable')) {
             return;
         }
         // add a <del>
         else {
-            var listItem = $this.innerHTML;
-            $this.innerHTML = '<del>' + listItem + '</del>';
+            var listItem = clickedThing.innerHTML;
+            clickedThing.innerHTML = '<del>' + listItem + '</del>';
             setLocalStorage();
         }
     }
@@ -99,9 +101,9 @@ function clickHandler( event ) {
 
 
 // this simply sets the state to either 'edit' or 'shop'
-function setState($this,stateType) {
-    $this.setAttribute('data-type',stateType);
-    $this.innerHTML = stateType;
+function setState(clickedThing,stateType) {
+    clickedThing.setAttribute('data-type',stateType);
+    clickedThing.innerHTML = stateType;
     localStorage.setItem('storedState', stateType);
 }
 
@@ -118,6 +120,11 @@ function deleteDeleted() {
 // This sets the localStorage to the innerHTML of the <ul>
 function setLocalStorage() {
     theList = theUL.innerHTML;
+    // if there's no <li> in the list, add one
+    if (theList.indexOf('<li>') < 0 ) {
+        theList = '<li>…</li>';
+        theUL.innerHTML = theList;
+    }
     localStorage.setItem('storedList', theList);
 }
 
@@ -127,9 +134,12 @@ function showPrefill() {
 }
 
 // fill the list with a prefilled list
-function fillPrefill($this) {
-    var theList = $this.getAttribute('data-list');
+function fillPrefill(clickedThing) {
+    var theList = clickedThing.getAttribute('data-list');
     theUL.innerHTML = document.getElementById(theList).innerHTML;
     setLocalStorage();
     document.getElementById('defaultLists').classList.toggle('active');
 }
+
+
+ }());
