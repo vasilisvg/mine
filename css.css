@@ -43,8 +43,12 @@ li:after {
     font-family: monospace;
     font-size: 1.231em;
 }
+[contenteditable] li {
+    background: red;
+    color: white;
+}
 [contenteditable] li:after {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid white;
 }
 
 del {
